@@ -1,6 +1,5 @@
 import { useContext, Fragment } from "react"
 import { CardContext } from "../context/CardContext"
-import { Link } from "react-router-dom"
 
 export function Carrito() {
   const { carrito, precioTotal, vaciarCarrito } = useContext(CardContext)
@@ -24,9 +23,6 @@ export function Carrito() {
           <>
             <h2>Precio total: {precioTotal()}</h2>
             <button onClick={() => vaciarCarrito()}>Vaciar</button>
-            <li className="nav-item">
-              <Link className="menu-link" to={'/checkout'}>Finalizar compra</Link>
-            </li>
           </> :
           <h4>El carrito está vaío</h4>
 

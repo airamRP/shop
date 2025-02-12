@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react"
+import { pedirItemPorId } from "../logic/pedirDatos"
 import { ItemDetail } from "./ItemDetail"
 import { useParams } from "react-router-dom"
-import { doc, getDoc} from "firebase/firestore"
-import { db } from "../firebase/config"
 
 export function ItemDetailContainer() {
   const [producto, setProducto] = useState({})
   const id = useParams().id
 
   useEffect(() => {
-    const docRef = doc(db, 'Shop', id)
-    getDoc(docRef).then((doc) => {
-      const data = { id: doc.id, ...doc.data() }
-      setProducto(data)
-    })
+    pedirItemPorId(Number(id))
+      .then(res => setProducto(res))
   }, [id])
 
   return (

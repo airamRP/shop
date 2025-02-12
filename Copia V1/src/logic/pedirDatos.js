@@ -9,7 +9,6 @@ export function pedirDatos () {
 }
 
 export function pedirItemPorId (id) {
-  console.log(id)
   return new Promise((resolve, reject) => {
     const item = data.find(el => el.id === id)
     if(item) {
